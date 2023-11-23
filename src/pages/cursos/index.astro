@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+const allCursos = await getCollection('cursos')
+---
+
+<BaseLayout
+  title='Índice de Cursos y Módulos'
+  description=''
+>
+  <ul>
+    {
+      allCursos.map((curso) => (
+        <li>
+          <a href={`/cursos/${curso.slug}/`}>{curso.data.titulo}</a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
